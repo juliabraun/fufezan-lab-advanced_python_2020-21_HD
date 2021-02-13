@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>db81a78f-6857-4a63-a66f-e724837689e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>exercises\count_aas.py</StartupFile>
+    <StartupFile>exercises\hydropathy.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -23,10 +23,20 @@
   <ItemGroup>
     <Compile Include="advanced_python_2020_21_HD.py" />
     <Compile Include="examples\command_line_example_click.py" />
-    <Compile Include="exercises\analysis_aa.py">
+    <Compile Include="exercises\count_aas.py">
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="exercises\count_aas.py">
+    <Compile Include="exercises\hydropathy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exercises\proteinclass.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exercises\plotly_test.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exercises\plot_aa_histogram.py" />
+    <Compile Include="exercises\test.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="notebooks\course.py" />

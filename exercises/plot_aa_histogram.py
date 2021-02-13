@@ -5,7 +5,7 @@ import sys
 
 def plot_aa_distribution(filename_in, filename_out, pdf_name):
     
-    dict_lettercode = aa.count_amino_acids(filename_in, filename_out)
+    dict_lettercode, count_min_max, name_min_max, sequence_min_max = aa.count_amino_acids(filename_in, filename_out)
     keys = dict_lettercode.keys()
     values = dict_lettercode.values()
     
@@ -21,11 +21,12 @@ def plot_aa_distribution(filename_in, filename_out, pdf_name):
 
 
 if __name__ == "__main__":
-    for i, arg in enumerate(sys.argv):
-        print(arg)
-        filename_in = arg
-        #filename_in = filename_in[1:-1]
-    print()
+    if 1 == len(sys.argv):
+        filename_in = os.path.join(".", "exercises", "data", "test.fasta")
+    else: 
+        for i, arg in enumerate(sys.argv):
+            filename_in = arg
+    
     print("filename_in = " + str(filename_in))
 
     # does the file exist?
