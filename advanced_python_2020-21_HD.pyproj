@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>db81a78f-6857-4a63-a66f-e724837689e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>exercises\hydropathy.py</StartupFile>
+    <StartupFile>exercises\pandas_coffee.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -26,7 +26,13 @@
     <Compile Include="exercises\count_aas.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="exercises\pandas_coffee.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="exercises\hydropathy.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exercises\kwarg_test.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="exercises\proteinclass.py">
@@ -48,6 +54,7 @@
     <Folder Include="data\" />
     <Folder Include="examples\" />
     <Folder Include="exercises\" />
+    <Folder Include="exercises\e06\" />
     <Folder Include="notebooks\" />
     <Folder Include="notebooks\imgs\" />
   </ItemGroup>
@@ -74,6 +81,13 @@
     <Content Include="notebooks\04.e04_ Objects.ipynb" />
     <Content Include="notebooks\05.09_Test_driven_development.ipynb" />
     <Content Include="notebooks\05.e05_ TDD.ipynb" />
+    <Content Include="notebooks\06.10_Intro_into_pandas.ipynb" />
+    <Content Include="notebooks\06.e06.Pandas_loving_coffee.ipynb" />
+    <Content Include="notebooks\07.11_Pandas_and_Coffee.ipynb" />
+    <Content Include="notebooks\07.e07_COVID_data_wrangling.ipynb" />
+    <Content Include="notebooks\08.e08_msp_to_dataframe.ipynb" />
+    <Content Include="notebooks\09_Tutorium.ipynb" />
+    <Content Include="notebooks\course_title.md" />
     <Content Include="notebooks\imgs\cc.png" />
     <Content Include="notebooks\imgs\christian_fufezan.jpg" />
     <Content Include="notebooks\imgs\proteomics-blog.png" />

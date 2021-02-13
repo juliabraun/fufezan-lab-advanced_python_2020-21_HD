@@ -16,6 +16,8 @@ lst = ['Geeks', 'For', 'Geeks', 'is', 'portal', 'for', 'Geeks']
   
 # list of int 
 lst2 = [11, 22, 33, 44, 55, 66, 77] 
+lst = [11, 22, 33, 44, 55, 66, 77] 
+
 
 def my_plotly(x, y, xlabel, ylabel, titlestr, fig_index):
 # Calling DataFrame constructor after zipping 
@@ -30,48 +32,18 @@ def my_plotly(x, y, xlabel, ylabel, titlestr, fig_index):
 my_plotly(lst, lst2, "ciao", "miau", "wau", 1)
 
 
-
-fig = px.scatter(pd_hydropathy, x="pka1", y="pka2",
+fig = px.line(pd_hydropathy, x="pka1", y="pka2",
                  title="Hydropathy")
+lst3 = [5,2,-10,-3,5]
+lst4 = [1,2,-10,-4,5]
 
-## Add range slider
-#fig.update_layout(
-#    xaxis=dict(
-#        rangeselector=dict(
-#            buttons=list([
-#                dict(count=1,
-#                     label="1m",
-#                     step="month",
-#                     stepmode="backward"),
-#                dict(count=6,
-#                     label="6m",
-#                     step="month",
-#                     stepmode="backward"),
-#                dict(count=1,
-#                     label="YTD",
-#                     step="year",
-#                     stepmode="todate"),
-#                dict(count=1,
-#                     label="1y",
-#                     step="year",
-#                     stepmode="backward"),
-#                dict(step="all")
-#            ])
-#        ),
-#        rangeslider=dict(
-#            visible=True
-#        ),
-#        type="date"
-#    )
-#)
-#
+
+# Only thing I figured is - I could do this 
+fig.add_scatter(x=lst3,y= lst4,mode = "lines") # Not what is desired - need a line
+
+
 
 fig.write_html('first_figure.html', auto_open=True)
-
-
-
-
-
 
 
 
