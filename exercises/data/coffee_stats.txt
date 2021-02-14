@@ -1,0 +1,14 @@
+The countries with more than 10 and less than 30 entries are:
+Nicaragua
+Uganda
+Kenya
+El Salvador
+Indonesia
+China
+Malawi
+
+
+The producer with most entries is La Plata
+
+The most common processing method is Washed / Wet
+The least common processing method is Pulped natural / honey

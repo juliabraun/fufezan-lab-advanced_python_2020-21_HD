@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>db81a78f-6857-4a63-a66f-e724837689e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>exercises\pandas_coffee.py</StartupFile>
+    <StartupFile>exercises\covid.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -24,6 +24,9 @@
     <Compile Include="advanced_python_2020_21_HD.py" />
     <Compile Include="examples\command_line_example_click.py" />
     <Compile Include="exercises\count_aas.py">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="exercises\covid.py">
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="exercises\pandas_coffee.py">
