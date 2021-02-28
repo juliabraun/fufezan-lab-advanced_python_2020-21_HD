@@ -6,6 +6,7 @@ import sys
 
 def create_fill_dict(filepath_in):
     """ Create and fill dict from input filepath. 
+    :param filepath_in: str, valid filepath
     """
 
     # initialise and fill dictionary
@@ -50,6 +51,9 @@ def create_fill_dict(filepath_in):
 
 def write_to_file(filepath_out, dict_lettercode, count_min_max, name_min_max, sequence_min_max):
     """ Open new file and write dict inside in specified format. 
+    :param filepath_out: str, specify locations where file will be saved
+    :param dict_lettercode: dict, that maps key to value (e.g. letter:amino acid)
+
     """
     # write result to file
     new_file = open(filepath_out, "w")
@@ -71,6 +75,10 @@ def write_to_file(filepath_out, dict_lettercode, count_min_max, name_min_max, se
     return 
 
 def count_amino_acids(filename_in, filename_out):
+    """
+    :param filename_out: str, specify name where file will be saved
+    :param filepath_in: str, valid filepath    
+    """
      
     dict_lettercode, count_min_max, name_min_max, sequence_min_max = create_fill_dict(filename_in)
     write_to_file(filename_out, dict_lettercode, count_min_max, name_min_max, sequence_min_max)

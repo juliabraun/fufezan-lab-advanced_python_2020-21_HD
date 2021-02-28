@@ -48,6 +48,10 @@ class proteinclass(object):
 
     # This method initialize the proteinclass
     def get_data(self, id):
+        """ Get data based on uniprot id
+        :param self:
+        :param id: int, uniprot id
+        """
         filepath_out = "id" + ".fasta"
         protein_url = "https://www.uniprot.org/uniprot/" + str(id) + ".fasta"
         resp = req.get(protein_url)
@@ -60,7 +64,7 @@ class proteinclass(object):
             self.name, self.sequence = fasta.id, str(fasta.seq)
 
         # prepare lookup
-        filename_in = os.path.join(".", ".", "data", "amino_acid_properties.csv")
+        filename_in = os.path.join( ".", "data", "amino_acid_properties.csv")
 
         pd_characteristics = pd.read_csv(filename_in)
         # reading csv as pandas 

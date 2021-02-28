@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>db81a78f-6857-4a63-a66f-e724837689e8</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>exercises\covid.py</StartupFile>
+    <StartupFile>exercises\proteinclass.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -49,6 +49,7 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="notebooks\course.py" />
+    <Compile Include="source\conf.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".vs\" />
@@ -60,6 +61,9 @@
     <Folder Include="exercises\e06\" />
     <Folder Include="notebooks\" />
     <Folder Include="notebooks\imgs\" />
+    <Folder Include="source\" />
+    <Folder Include="source\_static\" />
+    <Folder Include="source\_templates\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include=".vs\fufezan-lab-advanced_python_2020-21_HD\v16\.suo" />
@@ -96,6 +100,7 @@
     <Content Include="notebooks\imgs\proteomics-blog.png" />
     <Content Include="notebooks\imgs\tdd_already.jpg" />
     <Content Include="notebooks\imgs\tdd_explained.png" />
+    <Content Include="source\index.rst" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Python Tools\Microsoft.PythonTools.targets" />
   <!-- Uncomment the CoreCompile target to enable the Build command in

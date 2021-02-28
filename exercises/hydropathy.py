@@ -42,6 +42,10 @@ def add_moving_average(hydropathy_list, len_ma):
 
 # function with sequence and mapping dict
 def return_hydropathy_list(sequence, dict_mapping):
+    """
+    :param sequence: list of str, e.g. amino acid sequence
+
+    """
     hydropathy_list = []
     for letter in sequence:
         hydropathy_value = dict_mapping[letter]

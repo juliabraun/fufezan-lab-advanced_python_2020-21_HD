@@ -8,10 +8,29 @@ import plotly.express as px
 
 
 def analyse_country(covid_pd, country_name, flg_write = True):
+    """ This function analyses increase and decrease of covid 14d incidence and weekly deaths for specified countries
+    :param covid_pd: pd dataframe, containing covid data
+    :param country_name: str, country to be analysed
+    :param flg_write: bool, if True: give output summary of increase/decrease
+
+    output:
+    :param der_min: float, minimum derivative of incidence
+    :param der_max: float, maximum derivative of incidence
+    :param t_days: float, time values of dataset in days
+    :param incidence: np.array, 14d incidences
+    :param t_allday: 
+    :param incidence_smoothed:
+    :param death_smoothed: 
+    :param incidence_fluctuation:
+
+
+
+    """
 
     filtered_rows = covid_pd[covid_pd['countriesAndTerritories'].str.contains(country_name)]
     
     t = filtered_rows["deltaTime_since_start_of_recording"].to_numpy()
+    # convert time from seconds to days
     t_days = t/(60*60*24)
     
     # get incidence
@@ -32,15 +51,17 @@ def analyse_country(covid_pd, country_name, flg_write = True):
     # find max and min derivatives of incidence
     der_max = 0
     der_min = 0
+    # calculate derivative 
     for i in range(len(incidence)-1):
         num = (incidence[i+1] - incidence[i])
         den = t_days[i+1]-t_days[i]
 
         if den != 0:
             der_incidence = (num/den)
+            # select highest incidence derivative
             if der_incidence > der_max:
                 der_max = der_incidence
-    
+            # select lowest incidence derivative
             if der_incidence < der_min:
                 der_min = der_incidence
     
@@ -65,7 +86,6 @@ def analyse_country(covid_pd, country_name, flg_write = True):
         print(str("%.1f" % der_max) + " new cases per 100000 people per day")
         print("The most drastic decrease of the incidence in " + str(country_name) + " is: ")
         print(str("%.1f" % der_min) + " new cases per 100000 people per day")
-
 
 
     
@@ -120,9 +140,10 @@ def analyse_continent(covid_pd, name_countries, flg_write_countries = True, flg_
     return  der_min, der_max, incidence_fluctuation
 
 
-
+# download covid data from url
 covid_url = "https://opendata.ecdc.europa.eu/covid19/casedistribution/json/"
 
+# load json file into pd DataFrame
 resp = req.get(covid_url)
 covid_json = json.loads(resp.text)
 covid_pd = pd.DataFrame(covid_json["records"])
@@ -130,6 +151,7 @@ covid_pd = pd.DataFrame(covid_json["records"])
 covid_pd = covid_pd.replace(r'^\s*$', np.nan, regex=True)
 covid_pd = covid_pd.dropna(axis = 0)
 
+#rename
 old_name = "notification_rate_per_100000_population_14-days"
 new_name = "14d-incidence"
 covid_pd.rename(columns={(old_name): (new_name)}, inplace=True)
@@ -151,15 +173,16 @@ min = dateRep_sec.min()
 dateRep_sec = dateRep_sec - min
 covid_pd["deltaTime_since_start_of_recording"] = dateRep_sec
 
+#sort according to time
 covid_pd = covid_pd.sort_values("deltaTime_since_start_of_recording")
-print(covid_pd)
+#print(covid_pd)
 print(covid_pd.columns)
 
-
+# change names
 covid_pd = covid_pd.replace('Falkland_Islands_(Malvinas)', "Falkland_Islands_Malvinas")
 covid_pd = covid_pd.replace('Micronesia_(Federated_States_of)', "Micronesia")
 
-# only European countries
+# select only European countries
 covid_pd2 =  covid_pd[covid_pd['continentExp']=="Europe"]
 countries = covid_pd2["countriesAndTerritories"]
 freq_countries = countries.value_counts()
@@ -170,6 +193,8 @@ print("-----------------")
 # create list of death rates
 country_list = ["Italy", "Germany", "Sweden", "Greece"]
 t_allday2 = []
+
+
 death_smoothed2 = []
 for n in range(len(country_list)):
     der_min, der_max, t_days, incidence, t_allday, incidence_smoothed, death_smoothed, incidence_fluctuation = analyse_country(covid_pd, country_list[n], False)
@@ -185,6 +210,7 @@ for n in range(len(country_list)):
     death_smoothed2[n] = np.interp(t_allday_total, t_allday2[n], death_smoothed2[n])
 
 # create plot for all countries in country_list
+# for death rate
 df = pd.DataFrame(list(zip(t_allday_total)), 
                columns =["time (days)"])
 for n in range(len(country_list)):
@@ -192,7 +218,7 @@ for n in range(len(country_list)):
 fig = px.line(df, x='time (days)', y=country_list, title="Death rate")
 fig.write_html((str("figure_") + str("fig_index") + ".html"), auto_open=True)
 
-
+# for death rate smoothed
 df = px.data.wind()
 df = pd.DataFrame(list(zip(t_allday, death_smoothed)), 
                columns =["t_allday", "death_smoothed"])
@@ -205,6 +231,7 @@ freq_continents = continents.value_counts()
 name_continents = freq_continents.index.to_list()
 
 print(name_continents)
+# numbers per continent
 for n in range(len(name_continents)):
     covid_pd2 =  covid_pd[covid_pd['continentExp']==name_continents[n]]
     countries = covid_pd2["countriesAndTerritories"]
